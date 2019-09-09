@@ -77,17 +77,19 @@ axios({
                             key: randomString(16),
                             value: randomString(16)
                         }
-                        axios({
-                            method: 'get',
-                            url: 'https://aternos.org/panel/ajax/start.php?headstart=0',
-                            params: {
-                                ASEC: aternosSEC.key + ":" + aternosSEC.key
-                            },
-                            headers: {
-                                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
-                                'cookie': 'ATERNOS_SEC_' + aternosSEC.key + '=' + aternosSEC.key + '; ATERNOS_SESSION=' + aternosSessionCookie.value + ';'
-                            }
-                        });
+                        setTimeout(function () {
+                            axios({
+                                method: 'get',
+                                url: 'https://aternos.org/panel/ajax/start.php?headstart=0',
+                                params: {
+                                    ASEC: aternosSEC.key + ":" + aternosSEC.key
+                                },
+                                headers: {
+                                    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
+                                    'cookie': 'ATERNOS_SEC_' + aternosSEC.key + '=' + aternosSEC.key + '; ATERNOS_SESSION=' + aternosSessionCookie.value + ';'
+                                }
+                            });
+                        }, Math.floor(Math.random() * 20000));
                         break;
                     case 'online':
                         if (message.countdown != false) {
@@ -99,11 +101,14 @@ axios({
                                 password: configFile["minecraft"].password,
                                 tokensLocation: './bot_tokens.json'
                             };
-                            tokens.use(options, function (_err, _opts) {
-                                if (_err) throw _err;
-                                mc.createClient(_opts);
-                            });
+                            setTimeout(function () {
+                                tokens.use(options, function (_err, _opts) {
+                                    if (_err) throw _err;
+                                    mc.createClient(_opts);
+                                });
+                            }, Math.floor(Math.random() * 20000));
                         }
+                        break;
                 }
             }
         });
