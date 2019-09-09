@@ -54,13 +54,6 @@ axios({
 }).then(response => {
     aternosSessionCookie = setCookie.parse(response.headers['set-cookie'])[2];
 
-    const ws = new WebSocket('wss://aternos.org/hermes/', {
-        headers: {
-            cookie: 'ATERNOS_SESSION=' + aternosSessionCookie.value,
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
-        }
-    });
-
     const reconnectInterval = 1000 * 60;
 
     aternosSEC = {
@@ -69,6 +62,12 @@ axios({
     }
 
     const connect = function () {
+        const ws = new WebSocket('wss://aternos.org/hermes/', {
+            headers: {
+                cookie: 'ATERNOS_SESSION=' + aternosSessionCookie.value,
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
+            }
+        });
         ws.on('message', function incoming(data) {
             const response = JSON.parse(data);
             if (response.type == "status") {
