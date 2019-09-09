@@ -159,8 +159,7 @@ axios({
                         port: response.data.dynip.split(":")[1],
                         username: configFile["minecraft"].username,
                         password: configFile["minecraft"].password,
-                        tokensLocation: './bot_tokens.json',
-                        tokensDebug: true
+                        tokensLocation: './bot_tokens.json'
                     };
                     tokens.use(options, function (_err, _opts) {
                         if (_err) throw _err;
