@@ -1,0 +1,20 @@
+{
+  "name": "aternosalwayson",
+  "version": "0.1.0",
+  "description": "A program that keep your server always online on Aternos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@iarna/toml": "^2.2.3",
+    "axios": "^0.19.0",
+    "minecraft-protocol": "^1.9.4",
+    "prismarine-tokens": "^1.0.3",
+    "qs": "^6.8.0",
+    "set-cookie-parser": "^2.4.0",
+    "ws": "^7.1.2"
+  }
+}

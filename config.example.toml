@@ -1,0 +1,7 @@
+[aternos]
+username = "myAternosUsername"
+password = "myAternosPassword"
+
+[minecraft]
+username = "minecraftEmail"
+password = "minecraftPassword"
