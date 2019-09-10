@@ -106,7 +106,10 @@ axios({
                             setTimeout(function () {
                                 tokens.use(options, function (_err, _opts) {
                                     if (_err) throw _err;
-                                    mc.createClient(_opts);
+                                    const client = mc.createClient(_opts);
+                                    client.on('end', function () {
+                                        console.warn('Lost connection with the server.')
+                                    });
                                 });
                             }, Math.floor(Math.random() * 20000));
                         }
@@ -186,7 +189,10 @@ axios({
                     };
                     tokens.use(options, function (_err, _opts) {
                         if (_err) throw _err;
-                        mc.createClient(_opts);
+                        const client = mc.createClient(_opts);
+                        client.on('end', function () {
+                            console.warn('Lost connection with the server.')
+                        });
                     });
 
                     aternosSEC = {
